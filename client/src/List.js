@@ -81,8 +81,6 @@ class List extends Component {
     render () {
         return (
             <div className="col-md-12">
-        	        
-		<h1 className="text-center" style={{marginTop: '20px'}}>PROJET FINAL AMINE</h1>	
 
 		<form onSubmit={this.onSubmit}>
                     <div className="form-group">
