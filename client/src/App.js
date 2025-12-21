@@ -7,7 +7,7 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 mx-auto">
-            <h1 className="text-center">TODO</h1>
+            <h1 className="text-center">Amine Docker sala</h1>
             <List />
           </div>
         </div>
