@@ -1,27 +1,30 @@
 version: '3.8'
+
 services:
+  backend:
+    build: ./server
+    image: aminerahbani/todo-backend:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/todos
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./client
+    image: aminerahbani/todo-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
   mongo:
     image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-
-  backend:
-    build: ./server
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mongo
-
-  frontend:
-    build: ./client
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
-    environment:
-      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   mongo-data:
