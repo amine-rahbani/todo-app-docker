@@ -45,6 +45,20 @@ pipeline {
                 }
             }
         }
+
+        // --- THIS IS THE MISSING PART ---
+        stage('Deploy to Production') {
+            steps {
+                script {
+                    echo '--- Deploying App ---'
+                    // Stops old containers to free up ports
+                    sh 'docker-compose down || true'
+                    // Starts the new containers in the background
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
+        // --------------------------------
     }
 
     post {
@@ -53,7 +67,7 @@ pipeline {
             sh 'docker logout'
         }
         success {
-            echo 'Build and Push Successful!'
+            echo 'Build, Push, and Deploy Successful!'
         }
     }
 }

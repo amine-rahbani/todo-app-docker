@@ -16,6 +16,9 @@ services:
     image: aminerahbani/todo-frontend:latest
     ports:
       - "3000:3000"
+    # KEEPS REACT ALIVE IN DOCKER
+    stdin_open: true
+    tty: true
     depends_on:
       - backend
 
